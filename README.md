@@ -9,7 +9,9 @@ ts2tg notifies you on telegram when users join/leave your teamspeak server
 
 ## Running with Docker Compose
 
-Docker image: <https://hub.docker.com/r/watn3y/ts2tg>
+The Docker image is available on these registries.
+- [git.watn3y.de](https://git.watn3y.de/watn3y/-/packages/container/ts2tg/versions) - includes all tags
+- [Docker Hub](https://hub.docker.com/r/watn3y/ts2tg) - includes only releases
 
 Example compose file:
 
