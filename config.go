@@ -19,9 +19,10 @@ type Config struct {
 	}
 
 	Teamspeak struct {
-		BaseURL string `env:"TS2TG_TEAMSPEAK_BASEURL, required"`
-		APIKey  string `env:"TS2TG_TEAMSPEAK_APIKEY, required"`
-		JoinURL string `env:"TS2TG_TEAMSPEAK_JOINURL"`
+		BaseURL      string   `env:"TS2TG_TEAMSPEAK_BASEURL, required"`
+		APIKey       string   `env:"TS2TG_TEAMSPEAK_APIKEY, required"`
+		JoinURL      string   `env:"TS2TG_TEAMSPEAK_JOINURL"`
+		IgnoredUsers []string `env:"TS2TG_IGNOREDUSERS"`
 	}
 }
 

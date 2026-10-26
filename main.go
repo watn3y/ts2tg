@@ -31,7 +31,7 @@ func main() {
 	}
 	log.Info().Str("platform", serverInfo.Platform).Str("name", serverInfo.Name).Str("version", serverInfo.Version).Msg("Connected to TeamSpeak WebQuery successfully")
 
-	monitor(tsClient, tgClient, cfg.SleepInterval, cfg.Telegram.ChatID, cfg.Teamspeak.JoinURL)
+	monitor(tsClient, tgClient, cfg.SleepInterval, cfg.Telegram.ChatID, cfg.Teamspeak.JoinURL, cfg.Teamspeak.IgnoredUsers)
 }
 
 func configureLogger() {

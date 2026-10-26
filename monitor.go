@@ -11,7 +11,15 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func monitor(tsClient *teamspeak.Client, tgClient *telegram.Client, sleepInterval int, chatID int64, joinURL string) {
+func monitor(tsClient *teamspeak.Client, tgClient *telegram.Client, sleepInterval int, chatID int64, joinURL string, ignoredUsers []string) {
+
+	ignored := make(map[string]struct{}, len(ignoredUsers))
+	for _, uuid := range ignoredUsers {
+		uuid = strings.TrimSpace(uuid)
+		if uuid != "" {
+			ignored[uuid] = struct{}{}
+		}
+	}
 
 	previous, err := tsClient.GetClientListWithInfo()
 	if err != nil {
@@ -30,17 +38,25 @@ func monitor(tsClient *teamspeak.Client, tgClient *telegram.Client, sleepInterva
 		prevBySession := make(map[string]teamspeak.ClientList, len(previous))
 		for _, c := range previous {
 			// Type 0 is a regular connection, Type 1 a serverquery connection
-			if c.Type != "1" {
-				prevBySession[c.SessionID] = c
+			if c.Type == "1" {
+				continue
 			}
+			if _, skip := ignored[c.UUID]; skip {
+				continue
+			}
+			prevBySession[c.SessionID] = c
 		}
 
 		currBySession := make(map[string]teamspeak.ClientList, len(current))
 		for _, c := range current {
 			// Type 0 is a regular connection, Type 1 a serverquery connection
-			if c.Type != "1" {
-				currBySession[c.SessionID] = c
+			if c.Type == "1" {
+				continue
 			}
+			if _, skip := ignored[c.UUID]; skip {
+				continue
+			}
+			currBySession[c.SessionID] = c
 		}
 
 		for id, c := range prevBySession {

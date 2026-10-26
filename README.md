@@ -31,6 +31,7 @@ services:
       TS2TG_TEAMSPEAK_BASEURL:
       TS2TG_TEAMSPEAK_APIKEY:
       #TS2TG_TEAMSPEAK_JOINURL:
+      #TS2TG_IGNOREDUSERS:
 ```
 
 Available tags: latest, v1.0.0,v1.1.0,etc
@@ -57,6 +58,7 @@ A example HTML file to redirect your Users directly to their TeamSpeak applicati
 | `TS2TG_TEAMSPEAK_BASEURL` | Base URL of your TeamSpeak Server. Including the Virtual Server. For most people this will be /1                                             | None     | ✅       | http://example.com/1                          |
 | `TS2TG_TEAMSPEAK_APIKEY`  | TeamSpeak WebQuery API Key which can be generated [like this](https://community.teamspeak.com/t/what-is-apikey-for/6156/2)                   | None     | ✅       | A7B3C9D2E5F1A4B8C6D9E2F5A8B1C4D7E0F3A6B9      |
 | `TS2TG_TEAMSPEAK_JOINURL` | HTTP(S) URL of your redirect.html                                                                                                            | None     | ❌       | https://example.com/redirect.html             |
+| `TS2TG_IGNOREDUSERS`      | Comma-separated list of TeamSpeak unique identifiers (UUIDs) to ignore. Joins/leaves from these users won't trigger notifications            | None     | ❌       | abc123def456=,xyz789uvw012=                   |
 
 ## Nice to know
 
