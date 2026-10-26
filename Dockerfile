@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.26.1-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:1.26.10-alpine AS builder
 
 WORKDIR /ts2tg
 
@@ -22,7 +22,7 @@ LABEL org.opencontainers.image.title="ts2tg" \
     org.opencontainers.image.documentation="https://git.watn3y.de/watn3y/ts2tg/src/branch/master/README.md" \
     org.opencontainers.image.url="https://git.watn3y.de/watn3y/ts2tg" \
     org.opencontainers.image.source="https://git.watn3y.de/watn3y/ts2tg" \
-    org.opencontainers.image.licenses="GPL-3.0-or-later"
+    org.opencontainers.image.licenses="GPL-3.0"
 
 WORKDIR /app
 
